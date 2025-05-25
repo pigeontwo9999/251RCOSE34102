@@ -157,8 +157,9 @@ void evaluate(int idx){
 }
 
 void gather(){
+    printf("\n===Result===\n");
     for(int idx=0;idx<6;idx++){
-       printf("| Algorithm: %s | Average Waiting Time: %.2f,   MAX: %d, MIN: %d | Average Turnaround Time: %.2f,   MAX: %d, MIN: %d| CPU Utilization: %.2f%%",
+       printf("** Algorithm: %s **\n\t| Average Waiting Time: %.2f,   MAX: %d, MIN: %d | Average Turnaround Time: %.2f,   MAX: %d, MIN: %d| CPU Utilization: %.2f%%\n",
        table[idx].algorithm,
        table[idx].average_waiting_time,table[idx].max_wait,table[idx].min_wait,
        table[idx].average_turnaround_time,table[idx].max_turn,table[idx].min_turn,
