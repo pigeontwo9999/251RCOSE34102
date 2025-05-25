@@ -1,8 +1,9 @@
+#include "queue.h"
 #include <stdio.h>
 
 #include "schedule.h"
-#include "queue.h"
 #include "process.h"
+
 
 Process *current;
 int current_time;
@@ -21,6 +22,19 @@ void init(){
     current_time = 0;
     current_start = 0;
     now_running = 0;
+
+    for (int i=0;i<MAX_TIME;i++){
+        gantt[i].pid = -1;
+        gantt[i].start = 0;
+        gantt[i].end = 0;
+    }
+}
+
+void save(int pid, int st, int end){
+    gantt[gantt_idx].pid = pid;
+    gantt[gantt_idx].start = st;
+    gantt[gantt_idx].end = end;
+    gantt_idx++;
 }
 
 void run(){
@@ -29,7 +43,7 @@ void run(){
         current->response_time = current_time - current->arrival_time;
     }
     now_running = 1;
-    current_start = current_time;
+    current_start = current_time; // 간트땜에 적어놓기
 }
 
 void check_waitingqueue(){
@@ -76,6 +90,7 @@ void check_io_request(){
             queue_push(&waiting_queue, current);
             current->io_idx = i;
             now_running = 0;
+            save(current->pid, current_start, current_time);
             break;
         }
     }
@@ -89,6 +104,7 @@ void terminate(){
     
     current->status = TERMINATED;
     completed++;
+    save(current->pid, current_start, current_time);
 }
 
 void FCFS(){
@@ -137,6 +153,7 @@ void preempt(){
     now_running = 0;
     current->status = READY;
     queue_push(&ready_queue, current);
+    save(current->pid, current_start, current_time);
 }
 
 void SJF(){ // 선점형

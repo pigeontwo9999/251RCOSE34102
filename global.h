@@ -13,6 +13,8 @@
 #define MAX_IO_BURST_TIME 5
 #define MIN_IO_BURST_TIME 2
 
+#define MAX_TIME MAX_ARRIVAL_TIME + MAX_PROCESSES * (MAX_BURST_TIME + MAX_IO * MAX_IO_BURST_TIME)
+
 #define QUEUE_SIZE 100
 
 #define RR_Q 4
@@ -30,6 +32,7 @@ typedef enum {
     WAITING,
     TERMINATED
 } State;
+
 
 typedef struct {
     int pid;
@@ -62,6 +65,18 @@ typedef struct {
     int count;
 } Queue;
 
+typedef struct {
+    int pid;
+    int start;
+    int end;
+} Chart;
+
+typedef struct {
+    char *algorithm;
+    float average_waiting_time;
+    float average_turnaround_time;
+    float cpu_utilization;
+} evaluation;
 
 
 extern Process processes[MAX_PROCESSES];
@@ -70,5 +85,8 @@ extern int completed;
 extern Process current_processes[MAX_PROCESSES];
 extern Queue ready_queue;
 extern Queue waiting_queue;
+extern Chart gantt[MAX_TIME];
+extern int gantt_idx;
 
+extern evaluation table[7];
 #endif

@@ -2,6 +2,11 @@
     "files.associations": {
         "stdio.h": "c",
         "global.h": "c",
-        "process.h": "c"
+        "process.h": "c",
+        "schedule.h": "c",
+        "queue.h": "c",
+        "atomic": "c",
+        "cstddef": "c",
+        "type_traits": "c"
     }
 }

@@ -19,6 +19,11 @@ Process current_processes[MAX_PROCESSES];
 Queue ready_queue;
 Queue waiting_queue;
 
+Chart gantt[MAX_TIME];
+int gantt_idx;
+
+
+
 void menu(){
     printf("CPU Scheduling Simulator\n");
     printf("========================================\n");
@@ -60,9 +65,15 @@ int main(){
     }
 
     FCFS();
+    evaluate(0);
     SJF();
+    evaluate(1);
     SJF_nonpreemption();
+    evaluate(2);
     Priority();
+    evaluate(3);
     Priority_nonpreemption();
+    evaluate(4);
     RoundRobin();
+    evaluate(5);
 }
