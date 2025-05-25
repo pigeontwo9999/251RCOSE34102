@@ -7,12 +7,12 @@
 
 #include "queue.h"
 #include "process.h"
-
+#include "schedule.h"
 
 
 Process processes[MAX_PROCESSES];
 int num_processes = 0;
-int completed_processes = 0;
+int completed = 0;
 
 Process current_processes[MAX_PROCESSES];
 
@@ -59,4 +59,10 @@ int main(){
         print_process(&processes[i]);
     }
 
+    FCFS();
+    SJF();
+    SJF_nonpreemption();
+    Priority();
+    Priority_non_preemption();
+    RoundRobin();
 }

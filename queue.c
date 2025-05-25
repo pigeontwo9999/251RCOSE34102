@@ -74,7 +74,7 @@ Process *queue_pop_shortest(Queue *q) {
     }
     
     Process *selected = q->processlist[zz];
-    // Shift subsequent elements
+    
     int cur = zz;
     for (int i = 0; i < q->count - 1; i++) {
         int next = (cur + 1) % QUEUE_SIZE;
@@ -97,9 +97,9 @@ Process *queue_pop_highest_priority(Queue *q) {
             zz = idx;
         }
     }
-    // Remove the selected process
+    
     Process *selected = q->processlist[zz];
-    // Shift subsequent elements
+    
     int cur = zz;
     for (int i = 0; i < q->count - 1; i++) {
         int next = (cur + 1) % QUEUE_SIZE;

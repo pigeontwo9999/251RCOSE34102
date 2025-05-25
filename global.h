@@ -15,12 +15,21 @@
 
 #define QUEUE_SIZE 100
 
+#define RR_Q 4
+
 typedef struct {
     int arrival_time;
     int io_burst;
     int io_time;
     int completed;
 } IO;
+
+typedef enum {
+    READY,
+    RUNNING,
+    WAITING,
+    TERMINATED
+} State;
 
 typedef struct {
     int pid;
@@ -41,6 +50,8 @@ typedef struct {
     int response_time;
     int complete_time;
 
+    State status;
+
 } Process;
 
 
@@ -55,7 +66,7 @@ typedef struct {
 
 extern Process processes[MAX_PROCESSES];
 extern int num_processes;
-extern int completed_processes;
+extern int completed;
 extern Process current_processes[MAX_PROCESSES];
 extern Queue ready_queue;
 extern Queue waiting_queue;
