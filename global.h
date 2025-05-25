@@ -76,6 +76,11 @@ typedef struct {
     float average_waiting_time;
     float average_turnaround_time;
     float cpu_utilization;
+
+    int max_wait;
+    int min_wait;
+    int max_turn;
+    int min_turn;
 } evaluation;
 
 
