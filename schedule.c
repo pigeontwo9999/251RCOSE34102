@@ -273,7 +273,7 @@ void Priority(){
                 current_processes[i].status = READY;
 
                 if (now_running == 1){ // 실행중
-                    if (current->remaining_time > current_processes[i].remaining_time){
+                    if (current->priority > current_processes[i].priority){
                         preempt();
                     } //남은게 더 짧은놈이 있다면? 레디큐로 보내버리기기
                 }
