@@ -144,7 +144,41 @@ void evaluate(int idx){
        table[idx].algorithm,
        table[idx].average_waiting_time,max_wait,min_wait,
        table[idx].average_turnaround_time,max_turn,min_turn,
-       table[idx].cpu_utilization);
+       table[idx].cpu_utilization * 100.0f);
+
+}
 
 
+void best(){
+    
+    int best_wait_idx = 0;
+    int best_turn_idx = 0;
+    int best_cpu_idx  = 0;
+
+    for (int i = 0; i < 6; i++) {
+        
+        if (table[i].average_waiting_time < table[best_wait_idx].average_waiting_time) {
+            best_wait_idx = i;
+        }
+        
+        if (table[i].average_turnaround_time < table[best_turn_idx].average_turnaround_time) {
+            best_turn_idx = i;
+        }
+        
+        if (table[i].cpu_utilization > table[best_cpu_idx].cpu_utilization) {
+            best_cpu_idx = i;
+        }
+    }
+
+    printf("=== Best Algorithms ===\n");
+    printf("Shortest Average Waiting Time   : %s (%.2f units)\n",
+           table[best_wait_idx].algorithm,
+           table[best_wait_idx].average_waiting_time);
+    printf("Shortest Average Turnaround Time: %s (%.2f units)\n",
+           table[best_turn_idx].algorithm,
+           table[best_turn_idx].average_turnaround_time);
+    
+    printf("Highest CPU Utilization         : %s (%.2f%%)\n",
+           table[best_cpu_idx].algorithm,
+           table[best_cpu_idx].cpu_utilization * 100.0f);
 }

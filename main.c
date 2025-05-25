@@ -78,4 +78,6 @@ int main(){
     evaluate(4);
     RoundRobin();
     evaluate(5);
+
+    best();
 }
