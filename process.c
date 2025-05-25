@@ -167,3 +167,20 @@ void create_process_input(){
 
     create_io(p, io_arrive, io_burst);
 }
+
+
+void print_process(Process *p){
+    
+    printf("\n=============================================\n");
+    printf("PID %d\n", p->pid);
+    printf("Arrival Time: %d\n", p->arrival_time);
+    printf("CPU burst: %d\n", p->cpu_burst);
+    printf("Priority: %d\n", p->priority);
+    printf("IO Count: %d\n", p->io_count);
+    for (int i = 0; i < p->io_count; i++){
+        printf("IO %d Request Time: %d\n", i, p->io_list[i].arrival_time);
+        printf("IO %d Burst Time: %d\n", i, p->io_list[i].io_burst);
+    }
+    printf("==============================================\n");
+
+}

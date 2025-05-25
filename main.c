@@ -7,6 +7,8 @@
 #include "queue.h"
 #include "process.h"
 
+#include "global.h"
+
 Process processes[MAX_PROCESSES];
 int num_processes = 0;
 int completed_processes = 0;
@@ -49,4 +51,10 @@ int main(){
             create_process_random();
         }       
     }
+
+
+    for (int i=0;i<howmany;i++){
+        print_process(processes[i]);
+    }
+
 }

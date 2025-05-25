@@ -1,3 +1,6 @@
+#ifndef PROCESS_H
+#define PROCESS_H
+
 
 #define MAX_PROCESSES 10
 #define MAX_IO 3
@@ -10,6 +13,15 @@
 #define MAX_IO_BURST_TIME 5
 #define MIN_IO_BURST_TIME 2
 
+#include "global.h"
+
+typedef struct {
+    int arrival_time;
+    int io_burst;
+    int io_time;
+    int completed;
+} IO;
+
 typedef struct {
     int pid;
     int arrival_time;
@@ -20,7 +32,7 @@ typedef struct {
     int io_count;
     IO io_list[MAX_IO];
     int io_idx;
-    
+
     int start_time;
     int finish_time;
 
@@ -29,12 +41,6 @@ typedef struct {
     int response_time;
     int complete_time;
 
-
 } Process;
 
-typedef struct {
-    int arrival_time;
-    int io_burst;
-    int io_time;
-    int completed;
-} IO;
+#endif

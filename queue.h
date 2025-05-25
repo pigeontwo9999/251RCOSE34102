@@ -1,5 +1,8 @@
-#include "process.h"
+#ifndef QUEUE_H
+#define QUEUE_H
 
+#include "process.h"
+#include "global.h"
 #define QUEUE_SIZE 100
 
 
@@ -21,3 +24,5 @@ int queue_remove(Queue *q, Process *proc);
 
 Process *queue_pop_shortest(Queue *q);
 Process *queue_pop_highest_priority(Queue *q);
+
+#endif
