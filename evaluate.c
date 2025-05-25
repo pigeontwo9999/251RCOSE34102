@@ -11,6 +11,24 @@ const char *name_table[] = {
         "Priority_nonpreemption",
         "RoundRobin"
     };
+int get_min_waiting_time(){
+    int min_waiting_time = MAX_TIME;
+    for (int i = 0; i< num_processes; i++){
+        if (current_processes[i].waiting_time < min_waiting_time){
+            min_waiting_time = current_processes[i].waiting_time;
+        }
+    }
+    return min_waiting_time;
+}
+int get_min_turnaround_time(){
+    int min_turnaround_time = MAX_TIME;
+    for (int i = 0; i < num_processes; i++){
+        if (current_processes[i].turnaround_time < min_turnaround_time){
+            min_turnaround_time = current_processes[i].turnaround_time;
+        }
+    }
+    return min_turnaround_time;
+}    
 
 float get_average_waiting_time(){
     float total_waiting_time = 0;
@@ -112,17 +130,21 @@ void evaluate(int idx){
     float average_waiting_time = get_average_waiting_time();
     float average_turnaround_time = get_average_turnaround_time();
     float cpu_utilization = get_cpu_utilization();
+    int max_wait = get_max_waiting_time();
+    int max_turn = get_max_turnaround_time();
+    int min_wait = get_min_waiting_time();
+    int min_turn = get_min_turnaround_time();
 
     table[idx].algorithm = name;
     table[idx].average_waiting_time = average_waiting_time;
     table[idx].average_turnaround_time = average_turnaround_time;
     table[idx].cpu_utilization = cpu_utilization;
     
-    printf("Algorithm: %s | Average Waiting Time: %.2f | Average Turnaround Time: %.2f | CPU Utilization: %.2f%%\n",
+    printf("| Algorithm: %s \n| Average Waiting Time: %.2f,   MAX: %d, MIN: %d \n| Average Turnaround Time: %.2f,   MAX: %d, MIN: %d\n| CPU Utilization: %.2f%%\n",
        table[idx].algorithm,
-       table[idx].average_waiting_time,
-       table[idx].average_turnaround_time,
-       table[idx].cpu_utilization * 100.0f);
+       table[idx].average_waiting_time,max_wait,min_wait,
+       table[idx].average_turnaround_time,max_turn,min_turn,
+       table[idx].cpu_utilization);
 
 
 }
