@@ -6,8 +6,6 @@
 
 
 
-
-
 Process *current;
 int current_time;
 int current_start;

@@ -82,8 +82,8 @@ void print_gantt(){
     } else{
         printf("|");
     }
-    for (int i=0;i<gantt_idx;i++){
-        printf("   P%d |", gantt[i].pid);
+    for (int i = 0; i < gantt_idx ; i++){
+        printf("   P%-3d |", gantt[i].pid);
         if(gantt[i].end != gantt[i+1].start){
             printf("  idle  |");
         }
@@ -93,10 +93,10 @@ void print_gantt(){
     } else{
         printf("\n");
     }
-    for (int i=0;i<gantt_idx;i++){
+    for (int i = 0; i < gantt_idx ; i++){
         if(gantt[i].end != gantt[i+1].start){
             printf("%-5d%5d", gantt[i].start, gantt[i].end);
-            printf("\t");
+            printf("        ");
         }
         else{
             printf("%-9d", gantt[i].start);
