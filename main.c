@@ -1,13 +1,16 @@
+
+#include "global.h"
+#include "schedule.h"
+#include "queue.h"
+#include "process.h"
+//#include "schedule.h"
+#include "evaluate.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
 
-#include "global.h"
-
-#include "queue.h"
-#include "process.h"
-#include "schedule.h"
 
 
 Process processes[MAX_PROCESSES];

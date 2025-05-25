@@ -1,8 +1,11 @@
-#include "queue.h"
-#include <stdio.h>
 
+#include "queue.h"
 #include "schedule.h"
 #include "process.h"
+#include <stdio.h>
+
+
+
 
 
 Process *current;

@@ -3,5 +3,6 @@
 
 #include "global.h"
 
+void evaluate(int idx);
 
 #endif
