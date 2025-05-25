@@ -3,11 +3,12 @@
 #include <time.h>
 #include <string.h>
 
+#include "global.h"
 
 #include "queue.h"
 #include "process.h"
 
-#include "global.h"
+
 
 Process processes[MAX_PROCESSES];
 int num_processes = 0;

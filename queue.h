@@ -1,17 +1,10 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include "process.h"
 #include "global.h"
-#define QUEUE_SIZE 100
+#include "process.h"
 
 
-typedef struct {
-    Process *processlist[QUEUE_SIZE];
-    int head;
-    int tail;
-    int count;
-} Queue;
 
 
 void queue_init(Queue *q);
