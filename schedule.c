@@ -111,7 +111,7 @@ void FCFS(){
         // 프로세스중에 매물 탐색, readyqueue에 넣기
         for (int i=0;i<num_processes;i++){
             if (current_time == current_processes[i].arrival_time){
-                queue_push(&ready_queue, current_processes[i]);
+                queue_push(&ready_queue, &current_processes[i]);
                 current_processes[i].status = READY;
             }
         }
@@ -157,7 +157,7 @@ void SJF(){ // 선점형
         // 프로세스중에 매물 탐색, readyqueue에 넣기
         for (int i=0;i<num_processes;i++){
             if (current_time == current_processes[i].arrival_time){
-                queue_push(&ready_queue, current_processes[i]);
+                queue_push(&ready_queue, &current_processes[i]);
                 current_processes[i].status = READY;
 
                 if (now_running == 1){ // 실행중
@@ -205,7 +205,7 @@ void SJF_nonpreemption(){ // 비선점형
         // 프로세스중에 매물 탐색, readyqueue에 넣기
         for (int i=0;i<num_processes;i++){
             if (current_time == current_processes[i].arrival_time){
-                queue_push(&ready_queue, current_processes[i]);
+                queue_push(&ready_queue, &current_processes[i]);
                 current_processes[i].status = READY;
 
                 
@@ -250,7 +250,7 @@ void Priority(){
         // 프로세스중에 매물 탐색, readyqueue에 넣기
         for (int i=0;i<num_processes;i++){
             if (current_time == current_processes[i].arrival_time){
-                queue_push(&ready_queue, current_processes[i]);
+                queue_push(&ready_queue, &current_processes[i]);
                 current_processes[i].status = READY;
 
                 if (now_running == 1){ // 실행중
@@ -298,7 +298,7 @@ void Priority_nonpreemption(){
         // 프로세스중에 매물 탐색, readyqueue에 넣기
         for (int i=0;i<num_processes;i++){
             if (current_time == current_processes[i].arrival_time){
-                queue_push(&ready_queue, current_processes[i]);
+                queue_push(&ready_queue, &current_processes[i]);
                 current_processes[i].status = READY;
 
             }
@@ -347,7 +347,7 @@ void RoundRobin(){
         // 프로세스중에 매물 탐색, readyqueue에 넣기
         for (int i=0;i<num_processes;i++){
             if (current_time == current_processes[i].arrival_time){
-                queue_push(&ready_queue, current_processes[i]);
+                queue_push(&ready_queue, &current_processes[i]);
                 current_processes[i].status = READY;
             }
         }
