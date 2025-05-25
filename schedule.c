@@ -29,6 +29,7 @@ void init(){
         gantt[i].start = 0;
         gantt[i].end = 0;
     }
+    gantt_idx = 0;
 }
 
 void save(int pid, int st, int end){
