@@ -22,7 +22,7 @@ Queue waiting_queue;
 Chart gantt[MAX_TIME];
 int gantt_idx;
 
-
+evaluation table[7];
 
 void menu(){
     printf("CPU Scheduling Simulator\n");
