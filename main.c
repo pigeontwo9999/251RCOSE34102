@@ -63,6 +63,6 @@ int main(){
     SJF();
     SJF_nonpreemption();
     Priority();
-    Priority_non_preemption();
+    Priority_nonpreemption();
     RoundRobin();
 }

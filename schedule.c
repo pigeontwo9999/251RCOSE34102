@@ -44,7 +44,7 @@ void check_waitingqueue(){
             waiting->status = READY;
             queue_remove(&waiting_queue, waiting);
             head--;
-            enqueue(&ready_queue, waiting);
+            queue_push(&ready_queue, waiting);
         }
     }
 }
