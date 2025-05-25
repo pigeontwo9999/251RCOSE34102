@@ -1,5 +1,5 @@
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef SCHEDULE_H
+#define SCHEDULE_H
 
 #include "global.h"
 

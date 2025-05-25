@@ -79,6 +79,7 @@ typedef struct {
 } evaluation;
 
 
+
 extern Process processes[MAX_PROCESSES];
 extern int num_processes;
 extern int completed;
