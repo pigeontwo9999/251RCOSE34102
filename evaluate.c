@@ -95,33 +95,48 @@ float get_cpu_utilization(){
 void print_gantt(){
     printf("\nGantt chart\n");
     printf("========================================\n\n");
-    if (gantt[0].start != 0){
-        printf("|  idle  |");
-    } else{
+
+    // 1) 레이블 행
+    // 초기 idle
+    if (gantt[0].start != 0) {
+        printf("| idle   |");
+    } else {
         printf("|");
     }
-    for (int i = 0; i < gantt_idx ; i++){
-        printf("   P%-3d |", gantt[i].pid);
-        if(gantt[i].end != gantt[i+1].start){
-            printf("  idle  |");
+
+    // 각 프로세스 + 사이 idle
+    for (int i = 0; i < gantt_idx; i++) {
+        // 프로세스 블록 (총 8칸)
+        printf("  P%-2d   |", gantt[i].pid);
+
+        // 사이에 idle 필요하면 추가
+        if (i+1 < gantt_idx && gantt[i].end != gantt[i+1].start) {
+            printf(" idle   |");
         }
     }
-    if (gantt[0].start != 0){
-        printf("\n0\t ");
-    } else{
-        printf("\n");
+    printf("\n");
+
+    // 2) 시간축 행
+    // 초기 0 마커
+    if (gantt[0].start != 0) {
+        printf("%-8d", 0);
     }
-    for (int i = 0; i < gantt_idx ; i++){
-        if(gantt[i].end != gantt[i+1].start){
-            printf("%-5d%5d", gantt[i].start, gantt[i].end);
-            printf("        ");
-        }
-        else{
-            printf("%-9d", gantt[i].start);
+
+    // 각 블록의 start, (필요시) end 출력
+    for (int i = 0; i < gantt_idx; i++) {
+        // 시작 시간
+        printf("%-8d", gantt[i].start);
+
+        // 중간 idle 이 있으면 끝 시간도 찍기
+        if (i+1 < gantt_idx && gantt[i].end != gantt[i+1].start) {
+            printf("%-8d", gantt[i].end);
         }
     }
+
+    // 마지막 fin
     printf("fin\n\n");
 }
+
 
 void evaluate(int idx){
     print_gantt();
@@ -170,7 +185,7 @@ void best(){
         }
     }
 
-    printf("=== Best Algorithms ===\n");
+    printf("\n=== Best Algorithms ===\n");
     printf("Shortest Average Waiting Time   : %s (%.2f units)\n",
            table[best_wait_idx].algorithm,
            table[best_wait_idx].average_waiting_time);
