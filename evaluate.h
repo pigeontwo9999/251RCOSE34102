@@ -5,4 +5,5 @@
 
 void evaluate(int idx);
 void best();
+void gather();
 #endif

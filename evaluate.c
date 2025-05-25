@@ -140,6 +140,14 @@ void evaluate(int idx){
     table[idx].average_turnaround_time = average_turnaround_time;
     table[idx].cpu_utilization = cpu_utilization;
     
+    table[idx].max_wait = max_wait;
+    table[idx].min_wait = min_wait;
+    table[idx].max_turn = max_turn;
+    table[idx].min_turn = min_turn;
+
+
+
+
     printf("| Algorithm: %s \n| Average Waiting Time: %.2f,   MAX: %d, MIN: %d \n| Average Turnaround Time: %.2f,   MAX: %d, MIN: %d\n| CPU Utilization: %.2f%%\n",
        table[idx].algorithm,
        table[idx].average_waiting_time,max_wait,min_wait,
@@ -148,6 +156,15 @@ void evaluate(int idx){
 
 }
 
+void gather(){
+    for(int idx=0;idx<6;idx++){
+       printf("| Algorithm: %s | Average Waiting Time: %.2f,   MAX: %d, MIN: %d | Average Turnaround Time: %.2f,   MAX: %d, MIN: %d| CPU Utilization: %.2f%%",
+       table[idx].algorithm,
+       table[idx].average_waiting_time,table[idx].max_wait,table[idx].min_wait,
+       table[idx].average_turnaround_time,table[idx].max_turn,table[idx].min_turn,
+       table[idx].cpu_utilization * 100.0f);
+    }
+}
 
 void best(){
     
