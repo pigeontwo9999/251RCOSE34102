@@ -30,6 +30,7 @@ void menu(){
 
 int main(){
     srand(time(0));
+    pid_list_config();
     int choice, howmany;
 
 
@@ -55,7 +56,7 @@ int main(){
 
 
     for (int i=0;i<howmany;i++){
-        print_process(processes[i]);
+        print_process(&processes[i]);
     }
 
 }

@@ -1,9 +1,6 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-#include "queue.h"
-#include "process.h"
-
 
 #define MAX_PROCESSES 10
 #define MAX_IO 3
@@ -57,8 +54,8 @@ typedef struct {
 
 
 extern Process processes[MAX_PROCESSES];
-extern int num_processes = 0;
-extern int completed_processes = 0;
+extern int num_processes;
+extern int completed_processes;
 extern Process current_processes[MAX_PROCESSES];
 extern Queue ready_queue;
 extern Queue waiting_queue;

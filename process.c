@@ -71,6 +71,7 @@ void create_process_random(){
 
     create_process(pid, arrival_time, burst_time, priority, io_count);
 
+    if (!io_count) return ;
     int io_arrive[MAX_IO] = {0};
     int io_burst[MAX_IO] = {0};
 
@@ -142,6 +143,7 @@ void create_process_input(){
 
     create_process(pid, arrival_time, burst_time, priority, io_count);
 
+    if (!io_count) return ;
     int io_arrive[MAX_IO];
     int io_burst[MAX_IO];
 

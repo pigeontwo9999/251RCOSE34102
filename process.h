@@ -10,4 +10,5 @@ void create_process_random(void);
 void create_process_input(void);
 void print_process(Process*p);
 
+extern int pid_list[MAX_PROCESSES];
 #endif
